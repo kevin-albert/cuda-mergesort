@@ -5,7 +5,7 @@ include cudaMagic.mk
 # Include the helper functions from the samples directory
 INCLUDES  := -I/usr/local/cuda/samples/common/inc
 
-mergesort: src/mergesort.cu
+mergesort: mergesort.cu
 	$(NVCC) $(INCLUDES) $(ALL_CFLAGS) $(GENCODE_FLAGS) $< -o $@
 
 build:
