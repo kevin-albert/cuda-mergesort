@@ -271,8 +271,10 @@ __device__ unsigned int getIdx(dim3* threads, dim3* blocks) {
 //
 __global__ void gpu_mergesort(long* source, long* dest, long size, long width, long slices, dim3* threads, dim3* blocks) {
     unsigned int idx = getIdx(threads, blocks);
-    
-    long start = width * idx, middle, end;
+    long start = width*idx*slices, 
+         middle, 
+         end;
+
     for (long slice = 0; slice < slices; slice++) {
         if (start >= size)
             break;
@@ -359,6 +361,7 @@ long readList(long** list) {
 
     if (verbose)
         std::cout << "read stdin: " << tm() << " microseconds\n";
+
     return size;
 }
 
