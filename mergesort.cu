@@ -314,29 +314,10 @@ typedef struct {
 // it's 'optimized' not to check validity of the characters it reads in..
 long readList(long** list) {
     tm();
-    char buf[100];
-    char c;
-    int i;
-    bool inv;
     long v, size = 0;
     LinkNode* node = 0;
     LinkNode* first = 0;
-    while (std::cin >> buf) {
-        i = 1;
-        inv = false;
-        v = 0;
-        c = buf[0];
-        if (c == '-') {
-            c = buf[i++];
-            inv = true;
-        }
-        while (c) {
-            v *= 10;
-            v += c - 48;
-            c = buf[i++];
-        }
-        if (inv) v *= -1;
-
+    while (std::cin >> v) {
         LinkNode* next = new LinkNode();
         next->v = v;
         if (node)
